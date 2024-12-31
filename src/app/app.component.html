@@ -24,6 +24,12 @@
     </div>
   </div>
 
+  <div [ngSwitch]="response.status">
+    <div *ngSwitchCase="'resolved'">Data: {{ $any(response).data }}</div>
+    <div *ngSwitchCase="'error'">Data: {{ $any(response).message }}</div>
+    <div *ngSwitchDefault>Default</div>
+  </div>
+
   <!-- Cards Container -->
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -35,13 +41,14 @@
                 >{{ team.name }} | {{ team.country }}</span
               >
             </div>
-            <button>
+            <button (click)="toggle()">
               <svg
+                *ngIf="liked; else elseTemplate"
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-gray-300 cursor-pointer hover:text-red-500 transition-colors"
-                fill="none"
+                class="h-6 w-6 cursor-pointer"
+                fill="red"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="red"
               >
                 <path
                   stroke-linecap="round"
@@ -50,20 +57,22 @@
                   d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                 />
               </svg>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-gray-300 cursor-pointer hover:text-red-500 transition-colors"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                />
-              </svg>
+              <ng-template #elseTemplate>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 text-gray-300 cursor-pointer"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                  />
+                </svg>
+              </ng-template>
             </button>
           </div>
 
@@ -102,11 +111,16 @@
           <div class="mt-6">
             <div class="font-medium mb-2">Ligue des champions : 5</div>
             <div class="flex flex-wrap gap-2 text-blue-600 text-sm">
-              <span>1992</span>
-              <span>2006</span>
-              <span>2009</span>
-              <span>2011</span>
-              <span>2015</span>
+              <span
+                *ngFor="
+                  let year of team.champions;
+                  let odd = odd;
+                  let even = even
+                "
+                class="text-white"
+                [class]="{ 'bg-blue-600': odd, 'bg-amber-600': even }"
+                >{{ year }}</span
+              >
             </div>
           </div>
 
