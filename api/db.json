@@ -1,0 +1,95 @@
+{
+  "teams": [
+    {
+      "id": "fc-barcelona",
+      "name": "FC Barcelone",
+      "country": "🇪🇸",
+      "foundedAt": "1899-11-29",
+      "coach": "Xavi Hernandez",
+      "budget": 606000000,
+      "imageURL": "/assets/fc-barcelona.jpg",
+      "twitter": "FCBarcelona",
+      "champions": [1992, 2006, 2009, 2011, 2015]
+    },
+    {
+      "id": "real-madrid",
+      "name": "Real Madrid",
+      "country": "🇪🇸",
+      "foundedAt": "1902-03-06",
+      "coach": "Carlo Ancelotti",
+      "budget": 700000000,
+      "imageURL": "/assets/real-madrid.jpg",
+      "twitter": "RealMadrid",
+      "champions": [
+        1956, 1957, 1958, 1959, 1960, 1966, 1998, 2000, 2002, 2014, 2016, 2017,
+        2018, 2022
+      ]
+    },
+    {
+      "id": "bayern",
+      "name": "Bayern Munich",
+      "country": "🇩🇪",
+      "foundedAt": "1900-02-27",
+      "coach": "Thomas Tuchel",
+      "budget": 650000000,
+      "imageURL": "/assets/bayern.jpg",
+      "twitter": "FCBayern",
+      "champions": [1974, 1975, 1976, 2001, 2013, 2020]
+    },
+    {
+      "id": "manchester-city",
+      "name": "Manchester City",
+      "country": "🇬🇧",
+      "foundedAt": "1880-11-13",
+      "coach": "Pep Guardiola",
+      "budget": 800000000,
+      "imageURL": "/assets/manchester-city.png",
+      "twitter": "ManCity",
+      "champions": [2023]
+    },
+    {
+      "id": "arsenal",
+      "name": "Arsenal",
+      "country": "🇬🇧",
+      "foundedAt": "1886-10-01",
+      "coach": "Mikel Arteta",
+      "budget": 450000000,
+      "imageURL": "/assets/arsenal.jpg",
+      "twitter": "Arsenal",
+      "champions": []
+    },
+    {
+      "id": "psg",
+      "name": "Paris Saint-Germain",
+      "country": "🇫🇷",
+      "foundedAt": "1970-08-12",
+      "coach": "Luis Enrique",
+      "budget": 750000000,
+      "imageURL": "/assets/psg.jpg",
+      "twitter": "PSG_inside",
+      "champions": []
+    },
+    {
+      "id": "borussia-dortmund",
+      "name": "Borussia Dortmund",
+      "country": "🇩🇪",
+      "foundedAt": "1909-12-19",
+      "coach": "Edin Terzić",
+      "budget": 400000000,
+      "imageURL": "/assets/borussia-dortmund.jpg",
+      "twitter": "BVB",
+      "champions": [1997]
+    },
+    {
+      "id": "atletico",
+      "name": "Atletico Madrid",
+      "country": "🇪🇸",
+      "foundedAt": "1903-04-26",
+      "coach": "Diego Simeone",
+      "budget": 500000000,
+      "imageURL": "/assets/atletico.jpg",
+      "twitter": "Atleti",
+      "champions": []
+    }
+  ]
+}
