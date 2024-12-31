@@ -1,11 +1,12 @@
-import { NgFor } from '@angular/common';
+import { CurrencyPipe, DatePipe, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { TwitterPipe } from './utils/twitter.pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, DatePipe, CurrencyPipe, TwitterPipe, NgIf],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
