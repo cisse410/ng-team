@@ -7,6 +7,11 @@ import { map } from 'rxjs';
 
 export const routes: Routes = [
   {
+    path: '',
+    component: PostsPage,
+    title: 'Liste des articles',
+  },
+  {
     path: 'posts',
     component: PostsPage,
     title: 'Liste des articles',
