@@ -1,0 +1,106 @@
+<div class="max-w-2xl mx-auto mb-12">
+  <div class="relative">
+    <input
+      type="text"
+      placeholder="Rechercher une équipe"
+      class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    />
+    <svg
+      class="absolute right-3 top-2.5 h-5 w-5 text-gray-400"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+      />
+    </svg>
+  </div>
+</div>
+<!-- Cards Container -->
+<div class="max-w-7xl mx-auto">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="bg-white rounded-lg shadow-md">
+      <div class="p-6">
+        <div class="flex justify-between items-start mb-6">
+          <div class="flex items-center gap-2">
+            <span class="font-medium"
+              >{{ team.name }} | {{ team.country }} {{ liked }}</span
+            >
+          </div>
+          <!-- <app-favorite [liked]="liked" (likedChange)="onLikeChange($event)" /> -->
+          <app-favorite [(liked)]="liked" />
+        </div>
+
+        <div class="flex flex-col items-center mb-8">
+          <img
+            [src]="team.imageURL"
+            alt="{{ team.name }}"
+            class="w-24 h-24 md:w-28 md:h-28 mb-4"
+          />
+        </div>
+
+        <div class="space-y-2 text-sm text-gray-600">
+          <div class="flex gap-2">
+            <span class="font-medium">Fondé en :</span>
+            <span>{{ team.foundedAt | date : "fullDate" }}</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-medium">Entraineur :</span>
+            <span>{{ team.coach }}</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-medium">Budget :</span>
+            <span>{{ team.budget | currency : "EUR" }}</span>
+          </div>
+          <div class="flex gap-2">
+            <span class="font-medium">Twitter :</span>
+            <a
+              [href]="team.twitter | twitter"
+              target="_blank"
+              class="text-blue-500 underline"
+              >{{ team.twitter }}</a
+            >
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <div class="font-medium mb-2">Ligue des champions : 5</div>
+          <div class="flex flex-wrap gap-2 text-blue-600 text-sm">
+            @for (year of team.champions; track team.id) {
+            <span
+              class="text-white"
+              [class]="{ 'bg-blue-600': $odd, 'bg-amber-600': $even }"
+              >{{ year }}</span
+            >
+            } @empty {
+            <div class="text-red-600">
+              Oh cette equipe n'a pas remporte de LDC
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="mt-6 flex justify-between items-center">
+          <!-- Template reference variable -->
+          <a
+            #link
+            href="https://twitter.com/FCBarcelona"
+            class="text-blue-600 hover:underline text-sm"
+          >
+            Voir plus
+          </a>
+          <button
+            (click)="onAction()"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+          >
+            Action
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
