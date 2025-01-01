@@ -14,17 +14,7 @@ import { TwitterPipe } from './utils/twitter.pipe';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    DatePipe,
-    CurrencyPipe,
-    TwitterPipe,
-    NgIf,
-    NgFor,
-    NgSwitch,
-    NgSwitchCase,
-    NgSwitchDefault,
-  ],
+  imports: [RouterOutlet, DatePipe, CurrencyPipe, TwitterPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
