@@ -1,19 +1,13 @@
-import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, ViewChild } from '@angular/core';
-import { FavoriteComponent } from '../../components/favorite/favorite.component';
-import { TwitterPipe } from '../../utils/twitter.pipe';
 import { FormsModule } from '@angular/forms';
+import { FavoriteComponent } from '../../components/favorite/favorite.component';
+import { TeamCardComponent } from '../../components/team-card/team-card.component';
+import { Team } from '../../models/team';
 
 @Component({
   selector: 'app-team-list',
   standalone: true,
-  imports: [
-    DatePipe,
-    CurrencyPipe,
-    TwitterPipe,
-    FavoriteComponent,
-    FormsModule,
-  ],
+  imports: [FormsModule, TeamCardComponent],
   templateUrl: './team-list.page.html',
   styleUrl: './team-list.page.css',
 })
@@ -21,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class TeamListPage {
   liked = true;
   @ViewChild(FavoriteComponent) favorite!: FavoriteComponent;
-  team = {
+  team: Team = {
     id: 'fc-barcelona',
     name: 'FC Barcelone',
     country: '🇪🇸',

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, model, output } from '@angular/core';
 
 @Component({
   selector: 'app-favorite',
@@ -8,11 +8,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './favorite.component.css',
 })
 export class FavoriteComponent {
-  @Input({ required: true }) liked!: boolean;
-  @Output() likedChange = new EventEmitter<boolean>();
+  // @Input({ required: true }) liked!: boolean;
+  // @Output() likedChange = new EventEmitter<boolean>();
+  liked = model<boolean>();
+  likedChange = output<boolean>();
 
   toggle() {
-    this.liked = !this.liked;
-    this.likedChange.emit(this.liked);
+    this.liked.update((value) => !value);
   }
 }

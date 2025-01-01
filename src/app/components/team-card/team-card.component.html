@@ -1,0 +1,76 @@
+<div class="bg-white rounded-lg shadow-md">
+  <div class="p-6">
+    <div class="flex justify-between items-start mb-6">
+      <div class="flex items-center gap-2">
+        <span class="font-medium"
+          >{{ team().name }} | {{ team().country }}</span
+        >
+      </div>
+      <!-- <app-favorite [liked]="liked" (likedChange)="onLikeChange($event)" /> -->
+      <app-favorite [(liked)]="liked" />
+    </div>
+
+    <div class="flex flex-col items-center mb-8">
+      <img
+        [src]="team().imageURL"
+        alt="{{ team().name }}"
+        class="w-24 h-24 md:w-28 md:h-28 mb-4"
+      />
+    </div>
+
+    <div class="space-y-2 text-sm text-gray-600">
+      <div class="flex gap-2">
+        <span class="font-medium">Fondé en :</span>
+        <span>{{ team().foundedAt | date : "fullDate" }}</span>
+      </div>
+      <div class="flex gap-2">
+        <span class="font-medium">Entraineur :</span>
+        <span>{{ team().coach }}</span>
+      </div>
+      <div class="flex gap-2">
+        <span class="font-medium">Budget :</span>
+        <span>{{ team().budget | currency : "EUR" }}</span>
+      </div>
+      <div class="flex gap-2">
+        <span class="font-medium">Twitter :</span>
+        <a
+          [href]="team().twitter | twitter"
+          target="_blank"
+          class="text-blue-500 underline"
+          >{{ team().twitter }}</a
+        >
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <div class="font-medium mb-2">Ligue des champions : {{ wins() }}</div>
+      <div class="flex flex-wrap gap-2 text-blue-600 text-sm">
+        @for (year of team().champions; track team().id) {
+        <span
+          class="text-white"
+          [class]="{ 'bg-blue-600': $odd, 'bg-amber-600': $even }"
+          >{{ year }}</span
+        >
+        } @empty {
+        <div class="text-red-600">Oh cette equipe n'a pas remporte de LDC</div>
+        }
+      </div>
+    </div>
+
+    <div class="mt-6 flex justify-between items-center">
+      <!-- Template reference variable -->
+      <a
+        #link
+        href="https://twitter.com/FCBarcelona"
+        class="text-blue-600 hover:underline text-sm"
+      >
+        Voir plus
+      </a>
+      <button
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
+      >
+        Action
+      </button>
+    </div>
+  </div>
+</div>
