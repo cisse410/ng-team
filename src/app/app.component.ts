@@ -1,5 +1,6 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { fromEvent, Observable, Observer, Subscription } from 'rxjs';
 import { TeamListPage } from './pages/team-list/team-list.page';
 
 @Component({
@@ -11,25 +12,32 @@ import { TeamListPage } from './pages/team-list/team-list.page';
 })
 export class AppComponent {
   title = signal('ng-team');
-  count = computed(() => this.title().length);
 
-  // Deux possibilites de mettre a jour la valeur d'un signal
   constructor() {
-    this.title.set('ng-teams');
-    this.title.update((value) => value + ' change-with-update');
-    effect(() => {
-      console.log('Longeur du titre ' + this.count());
+    const observable$ = new Observable<number>((subscriber) => {
+      subscriber.next(1);
+      subscriber.next(2);
+      subscriber.next(3);
+
+      setTimeout(() => {
+        subscriber.next(4);
+      }, 5000);
     });
+
+    const observer: Observer<number> = {
+      next: (value) => console.log(`Next ${value}`),
+      error: (err) => console.log(`Error ${err}`),
+      complete: () => console.log(`Completed`),
+    };
+    const subscription: Subscription = observable$.subscribe(observer);
+
     setTimeout(() => {
-      this.title.set('ng-teams-teams');
-    }, 2000);
+      subscription.unsubscribe();
+    }, 3000);
+    fromEvent(document, 'click').subscribe(console.log);
   }
 
   response: Response = { status: 'resolved', data: 'Donnees recues' };
-
-  onClick(link: HTMLAnchorElement) {
-    console.log('onClick', link);
-  }
 }
 
 // Discriminated union
