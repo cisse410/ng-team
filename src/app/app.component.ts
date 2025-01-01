@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { fromEvent, Observable, Observer, Subscription } from 'rxjs';
-import { TeamListPage } from './pages/team-list/team-list.page';
+import { PostsPage } from './pages/posts/posts.page';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TeamListPage],
+  imports: [RouterOutlet, PostsPage],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

@@ -1,0 +1,8 @@
+<div class="mt-4 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+  <!-- @for (post of posts$ | async ; track post.id) {
+  <app-post-card [post]="post" />
+  } -->
+  @for (post of $posts() ; track post.id) {
+  <app-post-card [post]="post" />
+  }
+</div>
