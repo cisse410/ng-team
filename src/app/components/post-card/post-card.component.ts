@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class PostCardComponent {
   post = input.required<Post>();
-  router = inject(Router):
+  router = inject(Router);
   
   navigateToDetails() {
     const postId = this.post().id;
